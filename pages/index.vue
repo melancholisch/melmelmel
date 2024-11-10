@@ -1,11 +1,17 @@
 <template>
   <div class="container">
+    <Graveyard />
   </div>
 </template>
 
 <script>
+import Graveyard from '~/components/graveyard.vue';
+
 export default {
   mounted() {
+    let rainInterval;
+    let thunderInterval;
+
     function createRain() {
       const rain = document.createElement('div');
       rain.classList.add('rain');
@@ -29,8 +35,14 @@ export default {
       }, 500);
     }
 
-    setInterval(createRain, 5);
-    setInterval(createThunder, 5000);
+    rainInterval = setInterval(createRain, 5);
+
+    setTimeout(() => {
+      createThunder();
+      clearInterval(rainInterval);
+      rainInterval = setInterval(createRain, 1000); // Diminui a frequência da chuva
+      thunderInterval = setInterval(createThunder, 300000); // Trovão a cada 5 minutos
+    }, 5000);
   }
 }
 </script>
@@ -40,17 +52,17 @@ export default {
   body {
     margin: 0;
     overflow: hidden;
-    background:  #0a0a23; 
+    background:  #000000; 
   }
 
   .rain {
     position: absolute;
     width: 2px;
-    height: 30px;
+    height: 20px;
     opacity: 0.9;
     background: #8d8c8c81;
     animation: fall 0.05s linear infinite;
-    transform: rotate(15deg);
+    /* transform: rotate(15deg); removing the rain angulation*/ 
   }
 
   @keyframes fall {
@@ -65,20 +77,26 @@ export default {
   }
 
   .thunder {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: white;
-    opacity: 0;
-    animation: flash 1s infinite;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  pointer-events: none;
+  animation: flash 0.1s ease-in-out;
+}
 
-  @keyframes flash {
-    0%, 100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
+@keyframes flash {
+  0% {
+    opacity: 0;
   }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 </style>
