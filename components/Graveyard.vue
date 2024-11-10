@@ -1,14 +1,14 @@
 <template>
   <div class="graveyard-container">
     <div class="tombstone">
-        <img src="../images/graveyard-fu2.png" alt="Tombstone" class="tombstone-image" />
+        <img src="../assets/graveyard-fu2.png" alt="Tombstone" class="tombstone-image" />
         <div class="tombstone-text-container">
             <span class="tombstone-text" id="text-1">architecture</span>
             <span class="tombstone-text">portfolio</span>
         </div>
         
     </div>
-    <div class="lightning" id="lightning"></div>
+    <!-- <div class="lightning" id="lightning"></div> -->
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   name: 'Graveyard',
   mounted() {
     setTimeout(() => {
-      document.getElementById('lightning').classList.add('animate-lightning');
+      // document.getElementById('lightning').classList.add('animate-lightning');
       setTimeout(() => {
         document.getElementById('text-1').innerText = 'dev';
       }, 600); // Change text after lightning animation
@@ -32,7 +32,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #0a0a23;
   position: relative;
 }
 
@@ -52,12 +51,12 @@ export default {
 }
 
 .tombstone-text-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-65%, -20%);
-    z-index: 2;
-    text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-65%, -20%);
+  z-index: 2;
+  text-align: center;
 }
 .tombstone-text {
   display: block;
@@ -71,7 +70,7 @@ export default {
   }
 }
 
-.lightning {
+/* .lightning {
   position: absolute;
   top: 0;
   left: 45%;
@@ -97,5 +96,5 @@ export default {
 
 .animate-lightning {
   animation: lightning-strike 0.5s ease-in-out;
-}
+} */
 </style>

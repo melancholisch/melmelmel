@@ -1,13 +1,20 @@
 <template>
   <div class="container">
     <Graveyard />
+    <Links :showLinks="showLinks" class="links"/>
   </div>
 </template>
 
 <script>
-import Graveyard from '~/components/graveyard.vue';
+import Graveyard from '~/components/Graveyard.vue';
+import Links from '~/components/Links.vue';
 
 export default {
+  data() {
+    return {
+      showLinks: false
+    }
+  },
   mounted() {
     let rainInterval;
     let thunderInterval;
@@ -43,18 +50,28 @@ export default {
       rainInterval = setInterval(createRain, 1000); // Diminui a frequência da chuva
       thunderInterval = setInterval(createThunder, 300000); // Trovão a cada 5 minutos
     }, 5000);
+    setTimeout(() => {
+      this.showLinks = true;
+    }, 5000); // Show links after 5 seconds
   }
 }
 </script>
 
 
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background:  #000000; 
-  }
+body {
+  margin: 0;
+  overflow: hidden;
+  background:  #000000; 
+}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  background-color: #0a0a23;
+}
   .rain {
     position: absolute;
     width: 2px;
