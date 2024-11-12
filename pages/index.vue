@@ -1,19 +1,31 @@
 <template>
   <div class="container">
     <Graveyard />
-    <Links :showLinks="showLinks" class="links"/>
+    <div class="links-container" v-if="showLinks">
+      <a href="#about-me" class="link" >About Me</a>
+      <a href="#projects" class="link" >Projects</a>
+      <a href="#contact" class="link" >Contact</a>
+      <a href="https://github.com/melancholisch" target="_blank" class="link" >GitHub</a>
+    </div>
   </div>
 </template>
 
 <script>
 import Graveyard from '~/components/Graveyard.vue';
-import Links from '~/components/Links.vue';
+import AboutMe from '@/components/AboutMe.vue';
+import Projects from '@/components/Projects.vue';
+import Contact from '@/components/Contact.vue';
 
 export default {
+  components: {
+    AboutMe,
+    Projects,
+    Contact
+  },
   data() {
     return {
-      showLinks: false
-    }
+      showLinks: false,
+    };
   },
   mounted() {
     let rainInterval;
@@ -50,10 +62,11 @@ export default {
       rainInterval = setInterval(createRain, 1000); // Diminui a frequência da chuva
       thunderInterval = setInterval(createThunder, 300000); // Trovão a cada 5 minutos
     }, 5000);
+
     setTimeout(() => {
       this.showLinks = true;
     }, 5000); // Show links after 5 seconds
-  }
+  },
 }
 </script>
 
@@ -62,36 +75,38 @@ export default {
 body {
   margin: 0;
   overflow: hidden;
-  background:  #000000; 
+  background-color: #0a0a23;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 100vh;
-  background-color: #0a0a23;
 }
-  .rain {
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    opacity: 0.9;
-    background: #8d8c8c81;
-    animation: fall 0.05s linear infinite;
-    /* transform: rotate(15deg); removing the rain angulation*/ 
-  }
 
-  @keyframes fall {
-    0% {
-      top: -100px;
-      opacity: 1;
-    }
-    100% {
-      top: 100vh;
-      opacity: 0;
-    }
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  opacity: 0.9;
+  background: #8d8c8c81;
+  animation: fall 0.05s linear infinite;
+  /* transform: rotate(15deg); removing the rain angulation*/ 
+}
+
+@keyframes fall {
+  0% {
+    top: -100px;
+    opacity: 1;
   }
+  100% {
+    top: 100vh;
+    opacity: 0;
+  }
+}
 
   .thunder {
   position: fixed;
@@ -114,6 +129,26 @@ body {
   }
   100% {
     opacity: 0;
+  }
+}
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 </style>
