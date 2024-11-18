@@ -6,7 +6,7 @@
   export default { name: 'TextBlock' }
   </script>
   
-  <style>
+  <style lang="scss">
   .std {
     max-width: 42rem;
     font-size: 1rem;
