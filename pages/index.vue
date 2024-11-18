@@ -1,12 +1,20 @@
 <template>
-  <div class="container">
-    <Graveyard />
+  <div :class="themeClass" class="container">
     <div class="links-container" v-if="showLinks">
-      <a href="#about-me" class="link" >About Me</a>
-      <a href="#projects" class="link" >Projects</a>
-      <a href="#contact" class="link" >Contact</a>
-      <a href="https://github.com/melancholisch" target="_blank" class="link" >GitHub</a>
+      <div>
+        <a href="#about-me" class="link" >About Me</a>
+        <a href="#projects" class="link" >Projects</a>
+        <a href="#contact" class="link" >Contact</a>
+        <a href="https://github.com/melancholisch" target="_blank" class="link" >GitHub</a>
+      </div>
+
+      <button @click="toggleTheme" class="icon-button">
+        <component :is="themeIcon" class="w-6 h-6" :class="{'moon-icon': isDarkMode}"/>
+      </button>
     </div>
+
+    <Graveyard :image="graveyardImage" />
+    <AboutMe v-if="showAboutMe" id="about-me" />
   </div>
 </template>
 
@@ -15,21 +23,46 @@ import Graveyard from '~/components/Graveyard.vue';
 import AboutMe from '@/components/AboutMe.vue';
 import Projects from '@/components/Projects.vue';
 import Contact from '@/components/Contact.vue';
+import { SunIcon, MoonIcon } from 'vue-feather-icons';
 
 export default {
   components: {
     AboutMe,
     Projects,
-    Contact
+    Contact,
+    SunIcon,
+    MoonIcon
   },
   data() {
     return {
       showLinks: false,
+      isDarkMode: true,
+      showAboutMe: false,
+      themeIcon: 'MoonIcon'
     };
   },
+  computed: {
+    themeClass() {
+      return this.isDarkMode ? 'dark-theme' : 'light-theme';
+    },
+    graveyardImage() {
+      return this.isDarkMode ? require('./../assets/graveyard-fu2.png') : require('@/assets/graveyard.png');
+    }
+  },
+  methods: {
+    toggleTheme() {
+      this.isDarkMode = !this.isDarkMode;
+      this.themeIcon = this.isDarkMode ? 'MoonIcon' : 'SunIcon';
+    },
+  },
+  
   mounted() {
     let rainInterval;
     let thunderInterval;
+    // let Scrollmagic
+    // if (typeof window === 'undefined') {
+    //     Scrollmagic = require('scrollmagic')
+    // }
 
     function createRain() {
       const rain = document.createElement('div');
@@ -65,6 +98,8 @@ export default {
 
     setTimeout(() => {
       this.showLinks = true;
+      this.initScrollMagic();
+      document.body.style.overflowY = 'auto'; // Liberar o scroll
     }, 5000); // Show links after 5 seconds
   },
 }
@@ -72,19 +107,40 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
 body {
-  margin: 0;
   overflow: hidden;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.dark-theme{
   background-color: #0a0a23;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+}
+
+.light-theme{
+  background-color: #f5f5f5;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .rain {
@@ -132,23 +188,33 @@ body {
   }
 }
 
-.links-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-
 .link {
   color: #fff;
   text-decoration: none;
   padding: 0 10px;
 }
 
+.light-theme .link {
+  color: black;
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-button:focus {
+  outline: none;
+}
+.moon-icon {
+  color: white;
 }
 </style>
