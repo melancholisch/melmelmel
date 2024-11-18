@@ -1,5 +1,5 @@
 <template>
-  <div :class="themeClass" class="container">
+  <div :class="themeClass" id="app">
     <div class="links-container" v-if="showLinks">
       <div>
         <a href="#about-me" class="link" >About Me</a>
@@ -17,15 +17,9 @@
       <Graveyard :image="graveyardImage" />
     </div>
     <div class="content">
-      <section>
-        <AboutMe v-if="showAboutMe" id="about-me" />
-      </section>
-      <section>
-        <Projects v-if="showProjects" id="projects" />
-      </section>
-      <section>
-        <Contact v-if="showContact" id="contact" />
-      </section>
+      <AboutMe v-if="showAboutMe" id="about-me" />
+      <Projects v-if="showProjects" id="projects" />
+      <Contact v-if="showContact" id="contact" />
     </div>
 
   </div>
@@ -115,12 +109,97 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
+// vars
+:root {
+  --purple: #682ae9;
+  --light: #dbdbdb;
+  --header-link: #dbdbdb;
+  --header-link-hover: #682ae9;
+  --header-link-hover-icon: #dbdbdb;
+  --header-link-active: rgba(85, 85, 85, 1);
+  --std-color: #dbdbdb;
+  --bg: #0e1212;
+  --bg-rgb: 14, 18, 18;
+  --bgLight: radial-gradient(var(--bg), transparent, var(--purple) 130%);
+  --gray: #808080;
+  --comment: #555;
+}
+
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 0;
+  min-width: 0;
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--purple);
+  color: white;
+}
+
 body {
+  min-height: 100vh;
   overflow-x: hidden;
-  font-family: 'Work Sans', sans-serif;
+
+  &.locked {
+    overflow: hidden;
+  }
+}
+
+#app {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+// general
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+}
+
+svg {
+  title,
+  desc {
+    display: none;
+  }
+}
+
+// background
+body {
+  background: var(--bg);
+  transition: background-color 0.4s ease-out;
+
+  &.blue-background {
+    background: #0497d1;
+
+    .header-nav-button .dots {
+      background: #000;
+    }
+
+    .header-nav a {
+      color: #000;
+    }
+
+    .header-nav a svg,
+    .header-breadcrumb,
+    .header-nav-close-button {
+      color: #411a91;
+      fill: #411a91;
+    }
+  }
 }
 
 .dark-theme{
@@ -129,14 +208,6 @@ body {
 
 .light-theme{
   background-color: #f5f5f5;
-}
-
-.container {
-  display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center;
-  align-items: center; */
-  /* height: 100vh; */
 }
 
 .fixed-center {
