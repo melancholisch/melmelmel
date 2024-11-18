@@ -13,17 +13,19 @@
       "label": "CV"
     },
     "description": [
-      "Front end engineer."
+      "Front end engineer. Architect & urbanist"
     ],
     "subtitles": ["she/her"],
     "skills": [
       ["Frontend", "UX/UI"],
       [
         "Angular",
+        "Java",
         "JavaScript",
         "CSS",
         "HTML",
         "React",
+        "React Native",
         "Vue",
         "Node",
         "Sass",

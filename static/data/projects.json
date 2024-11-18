@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "image": "./vistoapp.png",
+      "about": {
+        "company": "Visto App - Sonata Lab",
+        "description": "Description of Project 1"
+      },
+      "stacks": ["React Native", "Figma", "MongoDB"],
+      "link": "https://vistoapp.com/"
+    },
+    {
+      "image": "./snip.png",
+      "about": {
+        "company": "Snip - Sonata Lab",
+        "description": "Description of Project 2"
+      },
+      "stacks": ["React", "Figma", "SEO"],
+      "link": "https://snipdrive.com/"
+    },
+    {
+      "image": "./ecotrash.png",
+      "about": {
+        "company": "Ecotrash",
+        "description": "Description of Project 3"
+      },
+      "stacks": ["React Native", "SEO", "MySQL"],
+      "link": "https://ecotrash.netlify.app/"
+    }
+  ]
+}
+  

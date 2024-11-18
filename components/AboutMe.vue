@@ -1,6 +1,7 @@
 <template>
     <div id="about" class="wrapper">
-      <div class="static-container">  
+      <div class="static-container">
+        <h1>Mellyssa Rabelo</h1>
         <TextBlock>
           <div class="first-fold">
             <ul class="about-contact">
