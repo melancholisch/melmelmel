@@ -1,11 +1,10 @@
 <template>
   <div :class="themeClass" id="app">
     <div class="links-container" v-if="showLinks">
-      <div>
-        <a href="#about-me" class="link" >About Me</a>
-        <a href="#projects" class="link" >Projects</a>
-        <a href="#contact" class="link" >Contact</a>
-        <a href="https://github.com/melancholisch" target="_blank" class="link" >GitHub</a>
+      <div class="links">
+        <a href="#about-me" class="link" @click="showSection('aboutMe')">about</a>
+        <a href="#projects" class="link" @click="showSection('projects')">projects</a>
+        <a href="https://github.com/melancholisch" target="_blank" class="link" >github</a>
       </div>
 
       <button @click="toggleTheme" class="icon-button">
@@ -17,9 +16,8 @@
       <Graveyard :image="graveyardImage" />
     </div>
     <div class="content">
-      <AboutMe v-if="showAboutMe" id="about-me" />
-      <Projects v-if="showProjects" id="projects" />
-      <Contact v-if="showContact" id="contact" />
+      <AboutMe v-if="activeSection === 'aboutMe'" id="about-me" />
+      <Projects v-if="activeSection === 'projects'" id="projects" />
     </div>
 
   </div>
@@ -29,14 +27,12 @@
 import Graveyard from '~/components/Graveyard.vue';
 import AboutMe from '@/components/AboutMe.vue';
 import Projects from '@/components/Projects.vue';
-import Contact from '@/components/Contact.vue';
 import { SunIcon, MoonIcon } from 'vue-feather-icons';
 
 export default {
   components: {
     AboutMe,
     Projects,
-    Contact,
     SunIcon,
     MoonIcon
   },
@@ -44,7 +40,7 @@ export default {
     return {
       showLinks: false,
       isDarkMode: true,
-      showAboutMe: false,
+      activeSection: null,
       themeIcon: 'MoonIcon'
     };
   },
@@ -57,6 +53,9 @@ export default {
     }
   },
   methods: {
+    showSection(section) {
+      this.activeSection = section;
+    },
     toggleTheme() {
       this.isDarkMode = !this.isDarkMode;
       this.themeIcon = this.isDarkMode ? 'MoonIcon' : 'SunIcon';
@@ -102,7 +101,8 @@ export default {
 
     setTimeout(() => {
       this.showLinks = true;
-      this.showAboutMe = true;
+      this.showSection('aboutMe');
+      document.body.classList.add('overflow-auto');
     }, 5000); // Show links after 5 seconds
   },
 }
@@ -110,7 +110,7 @@ export default {
 
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 // vars
 :root {
@@ -145,11 +145,17 @@ export default {
 
 body {
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
+  font-family: 'Roboto Mono', monospace;
+
 
   &.locked {
     overflow: hidden;
   }
+}
+
+.overflow-auto {
+  overflow-y: auto;
 }
 
 #app {
@@ -164,7 +170,17 @@ li {
 
 a {
   text-decoration: none;
-}
+    &:hover {
+      color: var(--header-link-hover);
+      svg {
+        fill: var(--header-link-hover-icon);
+      }
+    }
+    &.router-link-exact-active,
+    &.router-link-active {
+      color: var(--purple);
+    }
+  }
 
 button {
   border: 0;
@@ -210,6 +226,7 @@ body {
   background-color: #f5f5f5;
 }
 
+
 .fixed-center {
   position: absolute;
   top: 50%;
@@ -228,11 +245,27 @@ body {
   align-items: center;
   opacity: 0;
   animation: fadeIn 2s forwards;
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 0;
   right: 0;
   z-index: 10;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.light-theme .link {
+  color: black;
+  &:hover {
+    color: var(--header-link-hover);
+    svg {
+      fill: var(--header-link-hover-icon);
+    }
+  }
 }
 
 .rain {
@@ -280,27 +313,22 @@ body {
   }
 }
 
-.link {
-  color: #fff;
-  text-decoration: none;
-  padding: 0 10px;
-}
-
-.light-theme .link {
-  color: black;
-}
-
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
 
+//theme icon
 .icon-button {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+
+  &:hover .w-6.h-6 {
+    color: var(--header-link-hover);
+  }
 }
 
 .icon-button:focus {
