@@ -1,0 +1,73 @@
+{
+    "email": "monteirorabelomellyssa@gmail.com",
+    "links": [
+      {
+        "url": "https://github.com/melancholisch",
+        "title": "GitHub",
+        "icon": "GithubIcon"
+      }
+    ],
+    "cv": {
+      "file": "Mellyssa-Rabelo-dev-en.pdf",
+      "title": "Download CV",
+      "label": "CV"
+    },
+    "description": [
+      "Frontend developer."
+    ],
+    "subtitles": ["she/her"],
+    "skills": [
+    ["Frontend", "UX/UI"],
+      ["Frontend", "UX/UI"],
+      [
+        "Angular",
+        "JavaScript",
+        "CSS",
+        "HTML",
+        "React",
+        "Vue",
+        "Node",
+        "Canvas",
+        "SVG",
+        "Sass",
+        "Bootstrap"
+
+      ],
+      ["Figma", "Photoshop", "Illustrator"]
+    ],
+    "experiences": [
+      {
+        "position": "Mid level Frontend Engineer",
+        "company": "Itaú Unibanco",
+        "time": "* current"
+      },
+      {
+        "position": "Junior Backend Engineer",
+        "company": "Itaú Unibanco",
+        "time": "2020-2022"
+      },
+      {
+        "position": "Intern Frontend Engineer",
+        "company": "Sonata Lab",
+        "time": "2020-2020"
+      },
+      {
+        "position": "Freelancer",
+        "company": "Illustrations & Web development"
+      }
+    ],
+    "languages": {
+      "fluent": [
+        ["pt-BR", "Português"]
+      ],
+      "intermediate": [
+        ["es-ES", "Español"],
+        ["en-US", "English"]
+      ],
+      "basic": [
+        ["de-DE", "Deutsch"]
+      ]
+    },
+    "busy": ["Magic: The Gathering", "Guitar", "TFT"]
+  }
+  

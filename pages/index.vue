@@ -13,8 +13,21 @@
       </button>
     </div>
 
-    <Graveyard :image="graveyardImage" />
-    <AboutMe v-if="showAboutMe" id="about-me" />
+    <div class="fixed-center">
+      <Graveyard :image="graveyardImage" />
+    </div>
+    <div class="content">
+      <section>
+        <AboutMe v-if="showAboutMe" id="about-me" />
+      </section>
+      <section>
+        <Projects v-if="showProjects" id="projects" />
+      </section>
+      <section>
+        <Contact v-if="showContact" id="contact" />
+      </section>
+    </div>
+
   </div>
 </template>
 
@@ -59,10 +72,7 @@ export default {
   mounted() {
     let rainInterval;
     let thunderInterval;
-    // let Scrollmagic
-    // if (typeof window === 'undefined') {
-    //     Scrollmagic = require('scrollmagic')
-    // }
+
 
     function createRain() {
       const rain = document.createElement('div');
@@ -98,8 +108,7 @@ export default {
 
     setTimeout(() => {
       this.showLinks = true;
-      this.initScrollMagic();
-      document.body.style.overflowY = 'auto'; // Liberar o scroll
+      this.showAboutMe = true;
     }, 5000); // Show links after 5 seconds
   },
 }
@@ -110,7 +119,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -124,10 +133,22 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  /* flex-direction: column; */
+  /* justify-content: center;
+  align-items: center; */
+  /* height: 100vh; */
+}
+
+.fixed-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.content {
+  margin-top: 100vh;
 }
 
 .links-container {
