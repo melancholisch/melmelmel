@@ -1,7 +1,7 @@
 <template>
   <div class="graveyard-container">
     <div class="tombstone">
-        <img src="../assets/graveyard-fu2.png" alt="Tombstone" class="tombstone-image"/>
+        <img :src="image" alt="Tombstone" class="tombstone-image"/>
         <div class="tombstone-text-container">
             <span class="tombstone-text" id="text-1">architecture</span>
             <span class="tombstone-text">portfolio</span>
@@ -15,6 +15,13 @@
 <script>
 export default {
   name: 'Graveyard',
+  props: {
+    image: {
+      type: String,
+      required: true
+    },
+  },
+
   mounted() {
     setTimeout(() => {
       // document.getElementById('lightning').classList.add('animate-lightning');
@@ -43,7 +50,7 @@ export default {
 
 .tombstone-image {
   width: 100%;
-  height: auto;
+  /* height: auto; */
 }
 
 .tombstone-text-container {
@@ -59,6 +66,10 @@ export default {
 .tombstone-text {
   color: white;
   font-size: 0.4rem;
+}
+
+.light-theme .tombstone-text {
+  color: black;
 }
 
 @media (min-width: 600px) {
