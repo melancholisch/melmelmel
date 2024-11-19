@@ -235,6 +235,10 @@ svg {
   padding: 10px;
 }
 
+.light-theme .links-container {
+  background: #f5f5f5
+}
+
 .link {
   color: #fff;
   text-decoration: none;
