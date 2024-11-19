@@ -19,6 +19,7 @@
       <AboutMe v-if="activeSection === 'aboutMe'" id="about-me" />
       <Projects v-if="activeSection === 'projects'" id="projects" />
     </div>
+    <Footer v-if="showFooter" />
 
   </div>
 </template>
@@ -27,6 +28,7 @@
 import Graveyard from '~/components/Graveyard.vue';
 import AboutMe from '@/components/AboutMe.vue';
 import Projects from '@/components/Projects.vue';
+import Footer from '@/components/Footer.vue';
 import { SunIcon, MoonIcon } from 'vue-feather-icons';
 
 export default {
@@ -34,14 +36,17 @@ export default {
     AboutMe,
     Projects,
     SunIcon,
-    MoonIcon
+    MoonIcon, 
+    Graveyard,
+    Footer
   },
   data() {
     return {
       showLinks: false,
       isDarkMode: true,
       activeSection: null,
-      themeIcon: 'MoonIcon'
+      themeIcon: 'MoonIcon',
+      showFooter: false
     };
   },
   computed: {
@@ -101,6 +106,7 @@ export default {
 
     setTimeout(() => {
       this.showLinks = true;
+      this.showFooter = true;
       this.showSection('aboutMe');
       document.body.classList.add('overflow-auto');
     }, 5000); // Show links after 5 seconds
