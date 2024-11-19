@@ -127,8 +127,8 @@ export default {
   --header-link-hover-icon: #dbdbdb;
   --header-link-active: rgba(85, 85, 85, 1);
   --std-color: #dbdbdb;
-  --bg: #0e1212;
-  --bg-rgb: 14, 18, 18;
+  --bg: #0a0a23;
+  --bg-rgb: 10, 10, 35; 
   --bgLight: radial-gradient(var(--bg), transparent, var(--purple) 130%);
   --gray: #808080;
   --comment: #555;
@@ -200,30 +200,6 @@ svg {
 }
 
 // background
-body {
-  background: var(--bg);
-  transition: background-color 0.4s ease-out;
-
-  &.blue-background {
-    background: #0497d1;
-
-    .header-nav-button .dots {
-      background: #000;
-    }
-
-    .header-nav a {
-      color: #000;
-    }
-
-    .header-nav a svg,
-    .header-breadcrumb,
-    .header-nav-close-button {
-      color: #411a91;
-      fill: #411a91;
-    }
-  }
-}
-
 .dark-theme{
   background-color: #0a0a23;
 }
@@ -252,10 +228,11 @@ body {
   opacity: 0;
   animation: fadeIn 2s forwards;
   position: fixed;
-  top: 15px;
   left: 0;
   right: 0;
   z-index: 10;
+  background: linear-gradient(180deg, var(--bg) 3rem, rgba(var(--bg-rgb), 0)); //fix this
+  padding: 10px;
 }
 
 .link {
