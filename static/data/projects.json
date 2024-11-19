@@ -4,7 +4,7 @@
       "image": "./vistoapp.png",
       "about": {
         "company": "Visto App - Sonata Lab",
-        "description": "Description of Project 1"
+        "description": "Responsible for maintenance, correction and addition of new features in react native, improvements to seo"
       },
       "stacks": ["React Native", "Figma", "MongoDB"],
       "link": "https://vistoapp.com/"
@@ -13,7 +13,7 @@
       "image": "./snip.png",
       "about": {
         "company": "Snip - Sonata Lab",
-        "description": "Description of Project 2"
+        "description": "Same as Visto, but in React haha"
       },
       "stacks": ["React", "Figma", "SEO"],
       "link": "https://snipdrive.com/"
@@ -22,11 +22,10 @@
       "image": "./ecotrash.png",
       "about": {
         "company": "Ecotrash",
-        "description": "Description of Project 3"
+        "description": "Course project. Responsible for the prototype and the entire landing page on the web in React"
       },
-      "stacks": ["React Native", "SEO", "MySQL"],
+      "stacks": ["React", "SEO", "MySQL"],
       "link": "https://ecotrash.netlify.app/"
     }
   ]
 }
-  

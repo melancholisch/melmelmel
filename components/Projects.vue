@@ -8,7 +8,8 @@
             <ul>
               <li v-for="(project, i) in projects.projects" :key="i">
                 <img :src="project.image" :alt="project.about.description" class="project-image" /> <br />
-                {{ project.about.company }} - {{ project.about.description }}<br />
+                <span>{{ project.about.company }}</span> <br />
+                {{ project.about.description }}<br />
                 <strong>Stack:</strong> {{ project.stacks.join(', ') }}<br />
                 <a :href="project.link" target="_blank">Link</a>
               </li>
@@ -69,6 +70,9 @@ export default {
       font-size: 1rem;
       line-height: 1.5em;
       color: var(--gray);
+    }
+    span{
+        color: var(--purple);
     }
 
     .project-image {
