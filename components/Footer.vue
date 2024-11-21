@@ -3,8 +3,7 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-content__left">
-                    <p>© 2024 - Built with Nuxt.js and love</p>
-                    <p>Designed by Mellyssa. Todos os direitos reservados.</p>
+                    <p>© 2024 - Built with Nuxt.js</p>
                 </div>
             </div>
         </footer> 

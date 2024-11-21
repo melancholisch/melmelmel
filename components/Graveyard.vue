@@ -57,7 +57,7 @@ export default {
   position: absolute;
   top: 55%;
   left: 49%;
-  transform: translate(-50%, -50%);
+  transform: translate(-55%, -50%);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -66,6 +66,7 @@ export default {
 .tombstone-text {
   color: white;
   font-size: 0.4rem;
+  transform: rotate(3deg);
 }
 
 .light-theme .tombstone-text {

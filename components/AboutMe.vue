@@ -32,9 +32,9 @@
             </p>
             <p class="-gray" v-if="data.experiences">
               <span v-for="(line, i) in data.subtitles" :key="i">
-                // {{ line }}<br />
+               {{ line }}<br />
               </span>
-              // {{ data.experiences[0].position }} @
+              {{ data.experiences[0].position }} @
               {{ data.experiences[0].company }}
             </p>
           </div>
@@ -65,7 +65,7 @@
             <div class="columns languages">
               <ul>
                 <li v-for="(langs, level) in data.languages" :key="level">
-                  <span class="-comment">// {{ level }}</span
+                  <span class="-comment"> {{ level }}</span
                   ><br />
                   <span v-for="[locale, label] in langs" :key="locale"
                     ><em class="-purple">{{ locale }}</em> {{ label }}<br
