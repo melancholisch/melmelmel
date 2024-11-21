@@ -15,7 +15,6 @@
     "description": [
       "Front end engineer. Architect & urbanist"
     ],
-    "subtitles": ["she/her"],
     "skills": [
       ["Frontend", "UX/UI"],
       [
@@ -59,9 +58,11 @@
       "fluent": [
         ["pt-BR", "Portuguese"]
       ],
-      "intermediate": [
-        ["es-ES", "Español"],
+      "advanced": [
         ["en-US", "English"]
+      ],
+      "intermediate": [
+        ["es-ES", "Español"]
       ],
       "basic": [
         ["de-DE", "Deutsch"]
