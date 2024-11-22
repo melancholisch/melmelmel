@@ -50,6 +50,7 @@ export default {
 
 .tombstone-image {
   width: 100%;
+  /* min-width: 500px; */
   /* height: auto; */
 }
 
@@ -76,6 +77,11 @@ export default {
 @media (min-width: 600px) {
   .tombstone-text {
     font-size: 0.7rem;
+  }
+}
+@media (max-width: 1200px) {
+  .tombstone-image {
+    transform: scale(2.0); 
   }
 }
 </style>
