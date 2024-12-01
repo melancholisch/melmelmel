@@ -76,8 +76,8 @@ export default {
     }
 
     .project-image {
-        width: 100%;
-        height: 30vh;
+      width: 100%;
+      height: auto;
     }
 
     .tools {

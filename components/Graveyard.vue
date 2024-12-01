@@ -79,7 +79,7 @@ export default {
     font-size: 0.7rem;
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1023px) {
   .tombstone-image {
     transform: scale(2.0); 
   }
